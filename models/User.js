@@ -1,5 +1,6 @@
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
 class User extends Model {}
 
@@ -29,9 +30,19 @@ User.init(
             validate:{
                 len: [4]
             }
-        }
+        },
     },
     {
+        hooks:{
+            async beforeCreate(newUserData){
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                    return newUserData;
+            },
+            async beforeUpdate(updatedUserData){
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+            }
+        },
         //TABLE configuration options got here (https://sequelize.org/v5/manual/models-definition.html#configuration))
 
         // pass in our imported sequelize connection (the direct connection to our database)
