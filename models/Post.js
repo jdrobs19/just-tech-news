@@ -1,21 +1,21 @@
 const sequelize = require('../config/connection');
-const {Model, DataTypes} = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
-class Post extends Model{}
+class Post extends Model { }
 
 Post.init(
     {
-        id:{
+        id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        title:{
+        title: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        post_url:{
+        post_url: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -24,7 +24,7 @@ Post.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            references:{
+            references: {
                 model: 'user',
                 key: 'id'
             }
