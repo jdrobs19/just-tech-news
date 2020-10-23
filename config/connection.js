@@ -1,6 +1,3 @@
-const { SSL_OP_NO_QUERY_MTU } = require("constants");
-const { Sequelize } = require("sequelize/types");
-
 let sequelize;
 
 if(process.env.JAWSDB_URL){
@@ -14,6 +11,7 @@ if(process.env.JAWSDB_URL){
 }
 
 
+
 // const Sequelize = require('sequelize');
 // require('dotenv').config()
 
@@ -23,4 +21,4 @@ if(process.env.JAWSDB_URL){
 //     port: 3306
 // });
 
-module.exports = sequelize;
+// module.exports = sequelize;
